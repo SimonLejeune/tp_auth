@@ -1,0 +1,11 @@
+/Users/simonlejeune/Documents/UQAR Automne/Programmation orientée objet I (INF11107-MS)/TP6 noté/TP2/TP2/bin/Debug/netcoreapp3.0/TP2
+/Users/simonlejeune/Documents/UQAR Automne/Programmation orientée objet I (INF11107-MS)/TP6 noté/TP2/TP2/bin/Debug/netcoreapp3.0/TP2.deps.json
+/Users/simonlejeune/Documents/UQAR Automne/Programmation orientée objet I (INF11107-MS)/TP6 noté/TP2/TP2/bin/Debug/netcoreapp3.0/TP2.runtimeconfig.json
+/Users/simonlejeune/Documents/UQAR Automne/Programmation orientée objet I (INF11107-MS)/TP6 noté/TP2/TP2/bin/Debug/netcoreapp3.0/TP2.runtimeconfig.dev.json
+/Users/simonlejeune/Documents/UQAR Automne/Programmation orientée objet I (INF11107-MS)/TP6 noté/TP2/TP2/bin/Debug/netcoreapp3.0/TP2.dll
+/Users/simonlejeune/Documents/UQAR Automne/Programmation orientée objet I (INF11107-MS)/TP6 noté/TP2/TP2/bin/Debug/netcoreapp3.0/TP2.pdb
+/Users/simonlejeune/Documents/UQAR Automne/Programmation orientée objet I (INF11107-MS)/TP6 noté/TP2/TP2/obj/Debug/netcoreapp3.0/TP2.csprojAssemblyReference.cache
+/Users/simonlejeune/Documents/UQAR Automne/Programmation orientée objet I (INF11107-MS)/TP6 noté/TP2/TP2/obj/Debug/netcoreapp3.0/TP2.AssemblyInfoInputs.cache
+/Users/simonlejeune/Documents/UQAR Automne/Programmation orientée objet I (INF11107-MS)/TP6 noté/TP2/TP2/obj/Debug/netcoreapp3.0/TP2.AssemblyInfo.cs
+/Users/simonlejeune/Documents/UQAR Automne/Programmation orientée objet I (INF11107-MS)/TP6 noté/TP2/TP2/obj/Debug/netcoreapp3.0/TP2.dll
+/Users/simonlejeune/Documents/UQAR Automne/Programmation orientée objet I (INF11107-MS)/TP6 noté/TP2/TP2/obj/Debug/netcoreapp3.0/TP2.pdb
