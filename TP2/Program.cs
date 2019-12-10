@@ -1,139 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace TP2
 {
-    class Compte
-    {
-        string nom;
-        string prenom;
-
-        struct dateNaissance
-        {
-            public int jour;
-            public int mois;
-            public int annee;
-        }
-
-        string identifiant;
-        string password;
-        string mail;
-        int nbConnexion;
-        string profil;
-
-        void printInfo()
-        {
-            Console.WriteLine($"{this.nom}");
-            Console.WriteLine($"{this.prenom}");
-            Console.WriteLine($"{this.identifiant}");
-            Console.WriteLine($"{this.mail}");
-        }
-
-        void editInfo()
-        {
-            string newNom;
-            string newPrenom;
-            string newMail;
-            Console.Write("Nom :");
-            newNom = Console.ReadLine();
-            Console.Write("Prenom : ");
-            newPrenom = Console.ReadLine();
-            Console.Write("Mail : ");
-            newMail = Console.ReadLine();
-
-            this.nom = newNom;
-            this.prenom = newPrenom;
-            this.mail = newMail;
-        }
-
-        void changerPassword()
-        {
-            string newPassword;
-            Console.Write("Mot de passe");
-            newPassword = Console.ReadLine();
-
-            this.password = newPassword;
-        }
-    }
-
-    class Donnees
-    {
-        Compte compte;
-        int userConnected;
-
-        void changePassword()
-        {
-            string newPassword;
-            Console.Write("Mot de passe :");
-            newPassword = Console.ReadLine();
-        }
-
-        void exportData()
-        {
-            using (StreamWriter stream = new StreamWriter("data.csv"))
-            {
-                //foreach (KeyValuePair<uint, Client> client in Data_Clients)
-                //{
-                //    stream.WriteLine($"{client.Key},{client.Value.nom},{client.Value.prenom},{client.Value.solde},{client.Value.depenses}");
-                //}
-            }
-            Environment.Exit(0);
-        }
-
-        void importData()
-        {
-            Console.WriteLine("importData");
-        }
-
-        void connect()
-        {
-            Console.WriteLine("connect");
-        }
-
-        void disconnect()
-        {
-            Console.WriteLine("Disconnect");
-        }
-    }
-
-    class Security
-    {
-        string initialDictionnary;
-        string cryptDictionnary;
-        string keyCrypt;
-
-        void cryptDictionnaryGen()
-        {
-            Console.WriteLine("cryptDictionnaryGen");
-        }
-
-        void crypt()
-        {
-            Console.WriteLine("crypt");
-        }
-
-        void decrypt()
-        {
-            Console.WriteLine("decrypt");
-        }
-    }
-
     class Program
     {
-        Compte compte;
-        Donnees donnees;
-        Security security;
+        public static Donnees donnees;
 
         static void connexion()
         {
-            string identifiant;
-            string password;
+            string addressMail;
+            string password = "";
             Console.WriteLine("Connexion");
-            Console.Write($"Mail: ");
-            identifiant = Console.ReadLine();
+            Console.Write("Adresse mail: ");
+            addressMail = Console.ReadLine();
             Console.Write("Mot de passe: ");
-            password = Console.ReadLine();
+            do
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                // Backspace Should Not Work
+                if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
+                {
+                    password += key.KeyChar;
+                    Console.Write("*");
+                }
+                else
+                {
+                    if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+                    {
+                        password = password.Substring(0, (password.Length - 1));
+                        Console.Write("\b \b");
+                    }
+                    else if (key.Key == ConsoleKey.Enter)
+                    {
+                        Console.WriteLine("");
+                        break;
+                    }
+                }
+            } while (true);
             Console.WriteLine("Appuyer pour continuer");
             Console.ReadKey();
             Console.Clear();
@@ -141,13 +44,46 @@ namespace TP2
 
         static void inscription()
         {
-            string identifiant;
-            string password;
+            Random random = new Random();
+            Compte compte = new Compte();
+            string password = "";
             Console.WriteLine("Inscription");
-            Console.Write($"Mail: ");
-            identifiant = Console.ReadLine();
+            Console.Write("Nom: ");
+            compte.Nom = Console.ReadLine();
+            Console.Write("Prenom: ");
+            compte.Prenom = Console.ReadLine();
+            Console.Write("Adresse Mail: ");
+            compte.Mail = Console.ReadLine();
             Console.Write("Mot de passe: ");
-            password = Console.ReadLine();
+            do
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                // Backspace Should Not Work
+                if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
+                {
+                    password += key.KeyChar;
+                    Console.Write("*");
+                }
+                else
+                {
+                    if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+                    {
+                        password = password.Substring(0, (password.Length - 1));
+                        Console.Write("\b \b");
+                    }
+                    else if (key.Key == ConsoleKey.Enter)
+                    {
+                        Console.WriteLine("");
+                        break;
+                    }
+                }
+            } while (true);
+            compte.Password = password;
+            int num = random.Next(1000, 9999);
+            compte.Identifiant += compte.Nom.ToLower().Substring(0, 3);
+            compte.Identifiant += compte.Prenom.ToLower().Substring(0, 3);
+            compte.Identifiant += num;
+            donnees.comptes.Add(compte);
             Console.WriteLine("Appuyer pour continuer");
             Console.ReadKey();
             Console.Clear();
@@ -171,6 +107,8 @@ namespace TP2
                         inscription();
                         break;
                     case '3':
+                        Console.Write("Sauvegarde en cours");
+                        donnees.exportData();
                         Console.Clear();
                         Environment.Exit(0);
                         break;
