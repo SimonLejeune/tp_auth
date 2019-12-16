@@ -3,6 +3,9 @@ namespace TP2
 {
     public class Compte
     {
+
+        public static Security security = new Security();
+
         public Compte()
         {
         }
@@ -58,7 +61,7 @@ namespace TP2
         public void changePassword()
         {
             string newPassword = "";
-            Console.Write("Mot de passe : ");
+            Console.Write("Nouveau mot de passe :");
             do
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
@@ -72,7 +75,7 @@ namespace TP2
                 {
                     if (key.Key == ConsoleKey.Backspace && newPassword.Length > 0)
                     {
-                        newPassword = Password.Substring(0, (newPassword.Length - 1));
+                        newPassword = newPassword.Substring(0, (newPassword.Length - 1));
                         Console.Write("\b \b");
                     }
                     else if (key.Key == ConsoleKey.Enter)
@@ -82,7 +85,7 @@ namespace TP2
                     }
                 }
             } while (true);
-            this.Password = newPassword;
+            this.Password = security.crypt(newPassword);
             Console.WriteLine("Appuyer pour continuer");
             Console.ReadKey();
             Console.Clear();
