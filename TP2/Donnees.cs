@@ -6,6 +6,8 @@ namespace TP2
 {
     public class Donnees
     {
+        public static Security security = new Security();
+
         public Donnees()
         {
         }
@@ -39,7 +41,7 @@ namespace TP2
                     }
                 }
             } while (true);
-            compte.Password = newPassword;
+            compte.Password = security.crypt(newPassword);
         }
 
         public void exportData(List<Compte> comptes)
@@ -114,7 +116,7 @@ namespace TP2
             {
                 if (comptes[i].Mail == addressMail)
                 {
-                    if (comptes[i].Password == password)
+                    if (security.decrypt(comptes[i].Password) == password)
                     {
                         Console.WriteLine("Connexion success");
                         System.Threading.Thread.Sleep(1000);

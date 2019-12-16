@@ -7,6 +7,7 @@ namespace TP2
     {
         public static Donnees donnees = new Donnees();
         public static List<Compte> comptes = new List<Compte>();
+        public static Security security = new Security();
 
         static void inscription()
         {
@@ -44,7 +45,7 @@ namespace TP2
                     }
                 }
             } while (true);
-            compte.Password = password;
+            compte.Password = security.crypt(password);
             int num = random.Next(1000, 9999);
             compte.Identifiant += compte.Nom.ToLower().Substring(0, 3);
             compte.Identifiant += compte.Prenom.ToLower().Substring(0, 3);

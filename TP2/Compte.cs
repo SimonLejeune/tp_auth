@@ -26,10 +26,10 @@ namespace TP2
 
         public void printInfo()
         {
-            Console.WriteLine($"{this.Nom}");
-            Console.WriteLine($"{this.Prenom}");
-            Console.WriteLine($"{this.Identifiant}");
-            Console.WriteLine($"{this.Mail}");
+            Console.WriteLine($"Nom : {this.Nom}");
+            Console.WriteLine($"Prenom : {this.Prenom}");
+            Console.WriteLine($"Identifiant : {this.Identifiant}");
+            Console.WriteLine($"Mail : {this.Mail}\n");
             Console.WriteLine("Appuyer pour continuer");
             Console.ReadKey();
             Console.Clear();
