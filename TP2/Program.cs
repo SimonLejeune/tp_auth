@@ -1,46 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TP2
 {
     class Program
     {
-        public static Donnees donnees;
-
-        static void connexion()
-        {
-            string addressMail;
-            string password = "";
-            Console.WriteLine("Connexion");
-            Console.Write("Adresse mail: ");
-            addressMail = Console.ReadLine();
-            Console.Write("Mot de passe: ");
-            do
-            {
-                ConsoleKeyInfo key = Console.ReadKey(true);
-                // Backspace Should Not Work
-                if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
-                {
-                    password += key.KeyChar;
-                    Console.Write("*");
-                }
-                else
-                {
-                    if (key.Key == ConsoleKey.Backspace && password.Length > 0)
-                    {
-                        password = password.Substring(0, (password.Length - 1));
-                        Console.Write("\b \b");
-                    }
-                    else if (key.Key == ConsoleKey.Enter)
-                    {
-                        Console.WriteLine("");
-                        break;
-                    }
-                }
-            } while (true);
-            Console.WriteLine("Appuyer pour continuer");
-            Console.ReadKey();
-            Console.Clear();
-        }
+        public static Donnees donnees = new Donnees();
+        public static List<Compte> comptes = new List<Compte>();
 
         static void inscription()
         {
@@ -83,13 +49,15 @@ namespace TP2
             compte.Identifiant += compte.Nom.ToLower().Substring(0, 3);
             compte.Identifiant += compte.Prenom.ToLower().Substring(0, 3);
             compte.Identifiant += num;
-            donnees.comptes.Add(compte);
+            comptes.Add(compte);
             Console.WriteLine("Appuyer pour continuer");
             Console.ReadKey();
             Console.Clear();
         }
+
         static void Main(string[] args)
         {
+            comptes = donnees.importData();
             while (true)
             {
                 Console.WriteLine("1. Connexion");
@@ -100,7 +68,7 @@ namespace TP2
                 {
                     case '1':
                         Console.Clear();
-                        connexion();
+                        donnees.connect(comptes);
                         break;
                     case '2':
                         Console.Clear();
@@ -108,7 +76,7 @@ namespace TP2
                         break;
                     case '3':
                         Console.Write("Sauvegarde en cours");
-                        donnees.exportData();
+                        donnees.exportData(comptes);
                         Console.Clear();
                         Environment.Exit(0);
                         break;

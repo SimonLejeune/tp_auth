@@ -7,31 +7,8 @@ namespace TP2
         {
         }
 
-        private string nom;
-        public string Nom
-        {
-            get
-            {
-                return this.nom;
-            }
-            set
-            {
-                this.nom = value;
-            }
-        }
-
-        private string prenom;
-        public string Prenom
-        {
-            get
-            {
-                return this.prenom;
-            }
-            set
-            {
-                this.nom = value;
-            }
-        }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
 
         public struct dateNaissance
         {
@@ -40,54 +17,22 @@ namespace TP2
             public int annee;
         }
 
-        private string identifiant;
-        public string Identifiant
-        {
-            get
-            {
-                return this.identifiant;
-            }
-            set
-            {
-                this.identifiant = value;
-            }
-        }
+        public string Identifiant { get; set; }
+        public string Password { get; set; }
+        public string Mail { get; set; }
+        public int NbConnexion { get; set; }
 
-        private string password;
-        public string Password
-        {
-            get
-            {
-                return this.identifiant;
-            }
-            set
-            {
-                this.identifiant = value;
-            }
-        }
-
-        private string mail;
-        public string Mail
-        {
-            get
-            {
-                return this.mail;
-            }
-            set
-            {
-                this.mail = value;
-            }
-        }
-
-        public int nbConnexion;
         public string profil;
 
         public void printInfo()
         {
-            Console.WriteLine($"{this.nom}");
-            Console.WriteLine($"{this.prenom}");
-            Console.WriteLine($"{this.identifiant}");
-            Console.WriteLine($"{this.mail}");
+            Console.WriteLine($"{this.Nom}");
+            Console.WriteLine($"{this.Prenom}");
+            Console.WriteLine($"{this.Identifiant}");
+            Console.WriteLine($"{this.Mail}");
+            Console.WriteLine("Appuyer pour continuer");
+            Console.ReadKey();
+            Console.Clear();
         }
 
         public void editInfo()
@@ -95,22 +40,25 @@ namespace TP2
             string newNom;
             string newPrenom;
             string newMail;
-            Console.Write("Nom :");
+            Console.Write($"Nom ({this.Nom}) : ");
             newNom = Console.ReadLine();
-            Console.Write("Prenom : ");
+            Console.Write($"Prenom ({this.Prenom}) : ");
             newPrenom = Console.ReadLine();
-            Console.Write("Mail : ");
+            Console.Write($"Mail ({this.Mail}) : ");
             newMail = Console.ReadLine();
 
-            this.nom = newNom;
-            this.prenom = newPrenom;
-            this.mail = newMail;
+            this.Nom = newNom;
+            this.Prenom = newPrenom;
+            this.Mail = newMail;
+            Console.WriteLine("Appuyer pour continuer");
+            Console.ReadKey();
+            Console.Clear();
         }
 
         public void changePassword()
         {
             string newPassword = "";
-            Console.Write("Mot de passe");
+            Console.Write("Mot de passe : ");
             do
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
@@ -124,7 +72,7 @@ namespace TP2
                 {
                     if (key.Key == ConsoleKey.Backspace && newPassword.Length > 0)
                     {
-                        newPassword = password.Substring(0, (newPassword.Length - 1));
+                        newPassword = Password.Substring(0, (newPassword.Length - 1));
                         Console.Write("\b \b");
                     }
                     else if (key.Key == ConsoleKey.Enter)
@@ -134,7 +82,10 @@ namespace TP2
                     }
                 }
             } while (true);
-            this.password = newPassword;
+            this.Password = newPassword;
+            Console.WriteLine("Appuyer pour continuer");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }
